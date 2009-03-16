@@ -54,12 +54,6 @@
 // compatibility work-around logic for PHP4
   require('includes/functions/compatibility.php');
 
-// include the list of project filenames
-  require('includes/filenames.php');
-
-// include the list of project database tables
-  require('includes/database_tables.php');
-
 // initialize the message stack for output messages
   require('includes/classes/message_stack.php');
   $osC_MessageStack = new osC_MessageStack();
@@ -74,6 +68,14 @@
 // make a connection to the database... now
   $osC_Database = osC_Database::connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD);
   $osC_Database->selectDatabase(DB_DATABASE);
+
+
+// include the list of project filenames
+  require('includes/filenames.php');
+
+// include the list of project database tables
+  require('includes/database_tables.php');
+
 
 // set the application parameters
   $Qcfg = $osC_Database->query('select configuration_key as cfgKey, configuration_value as cfgValue from :table_configuration');
